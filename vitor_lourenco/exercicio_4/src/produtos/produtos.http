@@ -1,0 +1,32 @@
+### LISTAR PRODUTOS
+GET http://localhost:3000/produtos
+
+
+### LISTAR UM PRODUTOS
+GET http://localhost:3000/produtos/6
+
+
+### CRIAR PRODUTOS
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+    "nome":"A",
+    "cor":"aaa",
+    "marca": "Abcd"
+}
+
+
+### EDITAR PRODUTOS
+PATCH  http://localhost:3000/produtos/6
+Content-Type: application/json
+
+{
+    "nome": "a1",
+    "cor": "azul",
+}
+
+### DELETAR PRODUTOS
+DELETE  http://localhost:3000/produtos/4
+
+
