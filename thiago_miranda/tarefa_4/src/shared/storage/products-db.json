@@ -1,0 +1,34 @@
+[
+  {
+    "id": "e92b5e99-54e8-48a1-b050-cb114fc1d2b0",
+    "name": "Processador AMD Rysen 3 5300G",
+    "brand": "AMD",
+    "sku": 0,
+    "createdAt": "2025-05-23T13:38:52.667Z",
+    "updatedAt": null
+  },
+  {
+    "id": "5367fbcb-12d4-45ec-af7f-f814f81afa87",
+    "name": "SSD Kingston NV3 500GB",
+    "brand": "Kingston",
+    "sku": 0,
+    "createdAt": "2025-05-23T13:42:49.067Z",
+    "updatedAt": null
+  },
+  {
+    "id": "263ec617-1391-47c3-8174-cd0ad83c8b6e",
+    "name": "Placa de Vídeo RTX 4060 Ventus 2x Black",
+    "brand": "MSI",
+    "sku": 50,
+    "createdAt": "2025-05-23T15:34:38.766Z",
+    "updatedAt": "2025-05-23T15:37:06.939Z"
+  },
+  {
+    "id": "ae142630-4299-4d4d-972f-75f766d592ad",
+    "name": "Placa de Vídeo RTX 4060 Ventus 2x Black",
+    "brand": "HyperXYZ",
+    "sku": 0,
+    "createdAt": "2025-05-23T18:50:08.307Z",
+    "updatedAt": "2025-05-23T18:50:38.734Z"
+  }
+]
