@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { ProductModule } from './product/product.module';
+
+import { Product, ProductModule } from './product';
+import { FileStorageModule } from './shared/storage/file-storage.module';
 
 @Module({
-  imports: [ProductModule],
-  controllers: [AppController],
-  providers: [],
+  imports: [
+    FileStorageModule.forRoot({
+      filePath: 'src/shared/storage/products-db.json',
+      entityFactory: (data: Partial<Product>) => new Product(data),
+    }),
+
+    ProductModule,
+  ],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import { BaseEntity } from 'src/shared/baseEntity';
+import { BaseEntity } from 'src/shared';
 
 export class Product extends BaseEntity {
   name: string;

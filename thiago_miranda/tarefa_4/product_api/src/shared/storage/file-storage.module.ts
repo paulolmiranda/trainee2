@@ -1,7 +1,7 @@
 import { DynamicModule, Global, Module } from '@nestjs/common';
-import { FileStorageService } from './file-storage.service';
 
 import { BaseEntity } from '../baseEntity';
+import { FileStorageService } from './file-storage.service';
 
 export interface FileStorageModuleOptions<T extends BaseEntity> {
   filePath: string;
