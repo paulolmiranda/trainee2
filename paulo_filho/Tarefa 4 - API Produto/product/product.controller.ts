@@ -3,13 +3,18 @@ import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 
+
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
+  async create(@Body() createProductDto: CreateProductDto) {
+    const novoProduto = await this.productService.create(createProductDto);
+    return {
+      message: 'Produto criado com sucesso',
+      data: novoProduto,
+    }
   }
 
   @Get()
@@ -23,8 +28,12 @@ export class ProductController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(id, updateProductDto);
+  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+    const produtoAtualizado = await this.productService.update(id, updateProductDto);
+    return {
+      message: `Produto com ID '${id}' atualizado com sucesso!`,
+      data: produtoAtualizado,
+    };
   }
 
   @Delete(':id')

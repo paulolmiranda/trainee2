@@ -1,11 +1,10 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const { nanoid } = require('nanoid');
+
 
 @Entity('Products')
 export class Product {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
@@ -15,11 +14,5 @@ export class Product {
      color: string;
     
      @Column()
-     mark: string;
-
-     @BeforeInsert()
-     generateId() {
-        this.id = `${nanoid()}`;
-    }
-     
+     mark: string; 
 }
