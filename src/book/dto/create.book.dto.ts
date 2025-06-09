@@ -3,4 +3,3 @@ export class CreateBookDto {
   author: string;
   year: number;
 }
-

@@ -3,4 +3,3 @@ export class BookResponseDto {
   title: string;
   author: string;
 }
-
