@@ -1,8 +1,8 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { Injectable, OnModuleInit } from "@nestjs/common";
+import * as fs from "fs/promises";
+import * as path from "path";
 
-import { BaseEntity } from '../baseEntity';
+import { BaseEntity } from "../baseEntity";
 
 type EntityFactory<T> = (partial: Partial<T>) => T;
 
@@ -23,7 +23,7 @@ export class FileStorageService<T extends BaseEntity> implements OnModuleInit {
 
   private async loadFromFile() {
     try {
-      const data = await fs.readFile(this.filePath, 'utf-8');
+      const data = await fs.readFile(this.filePath, "utf-8");
 
       if (!data.trim()) {
         return this.initializeEmptyDb();
@@ -34,8 +34,8 @@ export class FileStorageService<T extends BaseEntity> implements OnModuleInit {
     } catch (error: unknown) {
       if (
         error instanceof Error &&
-        'code' in error &&
-        (error as NodeJS.ErrnoException).code === 'ENOENT'
+        "code" in error &&
+        (error as NodeJS.ErrnoException).code === "ENOENT"
       ) {
         return this.initializeEmptyDb();
       }
@@ -56,7 +56,7 @@ export class FileStorageService<T extends BaseEntity> implements OnModuleInit {
     await fs.writeFile(
       this.filePath,
       JSON.stringify(this.data, null, 2),
-      'utf-8',
+      "utf-8"
     );
   }
 

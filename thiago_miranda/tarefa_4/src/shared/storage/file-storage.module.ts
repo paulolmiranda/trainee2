@@ -1,7 +1,7 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
+import { DynamicModule, Global, Module } from "@nestjs/common";
 
-import { BaseEntity } from '../baseEntity';
-import { FileStorageService } from './file-storage.service';
+import { BaseEntity } from "../baseEntity";
+import { FileStorageService } from "./file-storage.service";
 
 export interface FileStorageModuleOptions<T extends BaseEntity> {
   filePath: string;
@@ -12,7 +12,7 @@ export interface FileStorageModuleOptions<T extends BaseEntity> {
 @Module({})
 export class FileStorageModule {
   static forRoot<T extends BaseEntity>(
-    options: FileStorageModuleOptions<T>,
+    options: FileStorageModuleOptions<T>
   ): DynamicModule {
     return {
       module: FileStorageModule,
@@ -21,7 +21,7 @@ export class FileStorageModule {
           provide: FileStorageService,
           useValue: new FileStorageService(
             options.filePath,
-            options.entityFactory,
+            options.entityFactory
           ),
         },
       ],
