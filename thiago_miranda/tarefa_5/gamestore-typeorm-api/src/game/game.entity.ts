@@ -76,6 +76,9 @@ export class Game {
   })
   isActive: boolean;
 
+  @ManyToMany(() => Order, (order) => order.games)
+  orders: Order[];
+
   @Column('text', {
     name: 'created_at',
     nullable: false,
@@ -91,9 +94,6 @@ export class Game {
     transformer: new DayJsTransformer(),
   })
   updatedAt: Date | null;
-
-  @ManyToMany(() => Order, (order) => order.games)
-  orders: Order[];
 
   @BeforeInsert()
   updateCreatedAt() {

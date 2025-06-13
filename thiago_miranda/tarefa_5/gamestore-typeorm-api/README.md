@@ -9,7 +9,8 @@ _Repositório da atividade:_ [tarefa-5-typeorm-api](https://github.com/ThiagoOMi
 ### **Sumário:**
 
 - <a href="#escopo">Escopo do Projeto</a>
-- <a href="#complemento">Complemento da Atividade</a>
+- <a href="#complemento_1">Complemento 1: DTOs e Mapper</a>
+- <a href="#complemento_2">Complemento 2: Validações</a>
 - <a href="#estrutura">Estrutura do projeto</a>
 - <a href="#projeto_apresentado">Projeto apresentado</a>
 - <a href="#principios_arquiteturais">Princípios Arquiteturais</a>
@@ -29,9 +30,13 @@ O projeto consiste em criar uma _API_ simples de tema livre utilizando _NestJS +
 - Atualização (PUT ou PATCH);
 - Exclusão (DELETE);
 
-### `Complemento da Atividade` <a name="complemento"></a>
+### `Complemento 1: DTOs e Mapper` <a name="complemento_1"></a>
 
 Criar os _DTOs_ considerando o modelo escolhido e avaliar e escolher uma solução entre _Mapper_ e _Adapter_.
+
+### `Complemento 2: Validações` <a name="complemento_2"></a>
+
+Adicione as validações necessárias no DTO da Atividade 5, respeitando o contexto e os requisitos de cada campo (por exemplo: título, descrição, IDs, etc.). As validações podem ser aplicadas globalmente no DTO ou localmente, caso prefira organizar de outra forma , ambas as abordagens são válidas.
 
 <br>
 
@@ -310,6 +315,15 @@ const createdEntity = await this.gameRepository.save(entity);
 return this.mapper.toDto(createdEntity);
 
 ``` 	
+
+<br>
+
+**_Implementação de Validações nos DTOs:_**
+Foi implementada de forma global na _main.ts_ chamando o _useGlobalPipes()_ e instanciando o _ValidationPipe_ com as propriedades _whitelist_ e _forbidNonWhitelisted_, _transform_ e skipUndefinedProperties.
+
+<p align="center"><img width="350" src="./image-1.png"></p>
+
+<p align="center"><i>Figura 01: Implementação Global do ValidationPipe.</i></p>
 
 <br>
 

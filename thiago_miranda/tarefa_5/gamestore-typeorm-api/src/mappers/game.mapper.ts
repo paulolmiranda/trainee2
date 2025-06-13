@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
+import dayjs from 'dayjs';
 import { BaseMapper } from './base.mapper';
 import { Game } from 'src/game/game.entity';
 import { GameDto } from 'src/game/dto/game.dto';
@@ -18,7 +19,7 @@ export class GameMapper extends BaseMapper<Game, GameDto> {
     dto.isActive = entity.isActive;
     dto.publisher = entity.publisher;
     dto.description = entity.description;
-    dto.release_date = entity.release_date;
+    dto.release_date = dayjs(entity.release_date).format('YYYY-MM-DD');
     return dto;
   }
 
@@ -31,7 +32,8 @@ export class GameMapper extends BaseMapper<Game, GameDto> {
     if (dto.publisher) entity.publisher = dto.publisher;
     if (dto.price !== undefined) entity.price = dto.price;
     if (dto.description) entity.description = dto.description;
-    if (dto.release_date) entity.release_date = dto.release_date;
+    if (dto.release_date)
+      entity.release_date = dayjs(dto.release_date).toDate();
     return entity;
   }
 }

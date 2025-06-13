@@ -7,6 +7,7 @@ import { GameRepository } from './game.repository';
 import { GameMapper } from 'src/mappers/game.mapper';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
+import { filterUndefined } from 'src/helpers/object.helper';
 
 @Injectable()
 export class GameService {
@@ -27,10 +28,9 @@ export class GameService {
     if (!game) {
       throw new NotFoundException('Game not found');
     }
-
-    const updatedData = { ...game, ...gameDto };
-    const entity = this.mapper.toEntity(updatedData);
-    const updatedEntity = await this.gameRepository.save(entity);
+    const cleanUpdates = filterUndefined(gameDto);
+    Object.assign(game, cleanUpdates);
+    const updatedEntity = await this.gameRepository.save(game);
     return this.mapper.toDto(updatedEntity);
   }
 

@@ -18,5 +18,5 @@ export class GameDto {
 
   isActive: boolean;
 
-  release_date: Date;
+  release_date: string;
 }

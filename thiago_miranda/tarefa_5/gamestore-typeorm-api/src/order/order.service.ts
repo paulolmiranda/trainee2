@@ -12,6 +12,7 @@ import { OrderStatusEnum } from './order-status.enum';
 import { OrderMapper } from 'src/mappers/order.mapper';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import { filterUndefined } from 'src/helpers/object.helper';
 
 @Injectable()
 export class OrderService {
@@ -47,7 +48,8 @@ export class OrderService {
       throw new BadRequestException('Cancelled orders cannot be modified');
     }
 
-    Object.assign(data, this.orderMapper.toEntity(dto));
+    const cleanUpdates = filterUndefined(dto);
+    Object.assign(data, cleanUpdates);
 
     const games = dto.gamesIds
       ? await this.gameService.validateGamesList(dto.gamesIds)
